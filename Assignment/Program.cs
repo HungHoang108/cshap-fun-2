@@ -4,12 +4,13 @@
     {
         //Challenge 1
         int[][] arr1 = { new int[] { 1, 2 }, new int[] { 2, 1, 5 } };
+
         int[] arr1Common = CommonItems(arr1);
         /* write method to print arr1Common */
 
         //Challenge 2
         int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        InverseJagged(arr2);
+        // InverseJagged(arr2);
         /* write method to print arr2 */
 
         //Challenge 3
@@ -19,21 +20,21 @@
 
         //Challenge 4
         int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
-        int[,] arr4Inverse = InverseRec(arr4);
+        // int[,] arr4Inverse = InverseRec(arr4);
         /* write method to print arr4Inverse */
 
         //Challenge 5
-        Demo("hello", 1, 2, "world");
+        // Demo("hello", 1, 2, "world");
 
         //Challenge 6
 
         //Challenge 7
-        string firstName, middleName, lastName;
-        ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
-        Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
+        // string firstName, middleName, lastName;
+        // ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
+        // Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
-        GuessingGame();
+        // GuessingGame();
     }
 
     /*
@@ -44,7 +45,18 @@
     */
     static int[] CommonItems(int[][] jaggedArray)
     {
-
+        int[] result = new int[2];
+        int counter = 0;
+        foreach (int i in jaggedArray[0])
+        {
+            // var test = Array.Exists(jaggedArray[1], num => num == i);
+            if (Array.Exists(jaggedArray[1], num => num == i))
+            {
+                result[counter] = i;
+                counter++;
+            }
+        }
+        return result;
     }
 
     /* 
@@ -52,10 +64,10 @@
     For example, int[][] arr = {new int[] {1,2}, new int[]{1,2,3}} 
     Expected result: int[][] arr = {new int[]{2, 1}, new int[]{3, 2, 1}}
      */
-    static void InverseJagged(int[][] jaggedArray)
-    {
+    // static void InverseJagged(int[][] jaggedArray)
+    // {
 
-    }
+    // }
 
     /* 
     Challenge 3.Find the difference between 2 consecutive elements of an array.
@@ -71,11 +83,11 @@
     Challenge 4. Inverse column/row of a rectangular array.
     For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
     Expected result: {{1,2},{3,4},{5,6}}
-     */
-    static int[,] InverseRec(int[,] recArray)
-    {
+    //  */
+    // static int[,] InverseRec(int[,] recArray)
+    // {
 
-    }
+    // }
 
     /* 
     Challenge 5. Write a function that accepts a variable number of params of any of these types: 
@@ -85,10 +97,10 @@
     - Finally print everything out. 
     Example: Demo("hello", 1, 2, "world") 
     Expected result: hello world; 3 */
-    static void Demo()
-    {
+    // static void Demo()
+    // {
 
-    }
+    // }
 
     /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
     and if they’re string, lengths have to be more than 5. 
@@ -100,14 +112,14 @@
 
     /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
     The names will be returned by using out modifier */
-    static void ParseNames(
-        string input,
-        out string firstName,
-        out string middleName,
-        out string lastName)
-    {
+    // static void ParseNames(
+    //     string input,
+    //     out string firstName,
+    //     out string middleName,
+    //     out string lastName)
+    // {
 
-    }
+    // }
 
     /* Challenge 8. Write a function that does the guessing game. 
     The function will think of a random integer number (lets say within 100) 
