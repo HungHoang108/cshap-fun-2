@@ -10,7 +10,7 @@
 
         //Challenge 2
         int[][] arr2 = { new int[] { 1, 2 }, new int[] { 1, 2, 3 } };
-        // InverseJagged(arr2);
+        InverseJagged(arr2);
         /* write method to print arr2 */
 
         //Challenge 3
@@ -20,7 +20,7 @@
 
         //Challenge 4
         int[,] arr4 = { { 1, 2, 3 }, { 4, 5, 6 } };
-        // int[,] arr4Inverse = InverseRec(arr4);
+        int[,] arr4Inverse = InverseRec(arr4);
         /* write method to print arr4Inverse */
 
         //Challenge 5
@@ -64,10 +64,14 @@
     For example, int[][] arr = {new int[] {1,2}, new int[]{1,2,3}} 
     Expected result: int[][] arr = {new int[]{2, 1}, new int[]{3, 2, 1}}
      */
-    // static void InverseJagged(int[][] jaggedArray)
-    // {
-
-    // }
+    static void InverseJagged(int[][] jaggedArray)
+    {
+        foreach (int[] i in jaggedArray)
+        {
+            Array.Reverse(i);
+        }
+        int[][] arr = { jaggedArray[0], jaggedArray[1] };
+    }
 
     /* 
     Challenge 3.Find the difference between 2 consecutive elements of an array.
@@ -76,7 +80,18 @@
      */
     static void CalculateDiff(int[][] jaggedArray)
     {
-
+        int[] arr1 = new int[jaggedArray[0].GetLength(0) - 1];
+        int[] arr2 = new int[jaggedArray[1].GetLength(0) - 1];
+        int[][] arr = { arr1, arr2 };
+        var counter = 0;
+        foreach (int[] i in jaggedArray)
+        {
+            for (var j = 0; j < (i.Length - 1); j++)
+            {
+                arr[counter][j] = i[j] - i[j + 1];
+            }
+            counter++;
+        }
     }
 
     /* 
@@ -84,10 +99,18 @@
     For example, given: int[,] arr = {{1,2,3}, {4,5,6}}
     Expected result: {{1,2},{3,4},{5,6}}
     //  */
-    // static int[,] InverseRec(int[,] recArray)
-    // {
+    static int[,] InverseRec(int[,] recArray)
+    {
+        int[] arr1;
+        System.Console.WriteLine(arr1);
+        int[] arr2 = new int[2];
+        int[] arr3 = new int[2];
 
-    // }
+        int[,] result = {arr1, arr2, arr3};
+
+        return result;
+
+    }
 
     /* 
     Challenge 5. Write a function that accepts a variable number of params of any of these types: 
