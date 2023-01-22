@@ -24,17 +24,17 @@
         /* write method to print arr4Inverse */
 
         //Challenge 5
-        // Demo("hello", 1, 2, "world");
+        Demo("hello", 1, 2, "world");
 
         //Challenge 6
-
+        SwapTwo("this is", "a string");
         //Challenge 7
-        // string firstName, middleName, lastName;
-        // ParseNames("Mary Elizabeth Smith", firstName, middleName, lastName);
-        // Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
+        string firstName, middleName, lastName;
+        ParseNames("Mary Elizabeth Smith", out firstName, out middleName, out lastName);
+        Console.WriteLine($"First name: {firstName}, middle name: {middleName}, last name: {lastName}");
 
         //Challenge 8
-        // GuessingGame();
+        GuessingGame();
     }
 
     /*
@@ -69,8 +69,10 @@
         foreach (int[] i in jaggedArray)
         {
             Array.Reverse(i);
+
         }
         int[][] arr = { jaggedArray[0], jaggedArray[1] };
+
     }
 
     /* 
@@ -101,13 +103,25 @@
     //  */
     static int[,] InverseRec(int[,] recArray)
     {
-        int[] arr1;
-        System.Console.WriteLine(arr1);
-        int[] arr2 = new int[2];
-        int[] arr3 = new int[2];
+        int a = recArray.GetLength(0);
+        int b = recArray.GetLength(1);
 
-        int[,] result = {arr1, arr2, arr3};
-
+        int[,] result = new int[b, a];
+        var c = 0;
+        var d = 0;
+        for (var i = 0; i < a; i++)
+        {
+            for (var j = 0; j < b; j++)
+            {
+                result[c, d] = recArray[i, j];
+                d++;
+                if (d > 1)
+                {
+                    d = 0;
+                    c++;
+                }
+            }
+        }
         return result;
 
     }
@@ -120,29 +134,38 @@
     - Finally print everything out. 
     Example: Demo("hello", 1, 2, "world") 
     Expected result: hello world; 3 */
-    // static void Demo()
-    // {
-
-    // }
+    static void Demo(string a, int b, int c, string d)
+    {
+        string words = a + " " + d + "; ";
+        int nums = b + c;
+        // System.Console.WriteLine(words + nums);
+    }
 
     /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
     and if they’re string, lengths have to be more than 5. 
     If they’re numbers, they have to be more than 18. */
-    static void SwapTwo()
+    static void SwapTwo(string a, string b)
     {
+        string c = a + b;
+
+        a = c.Substring(a.Length, b.Length);
+        b = c.Substring(0, a.Length - 1);
+        System.Console.WriteLine(b);
 
     }
 
     /* Challenge 7. Write a function to parse the first name, middle name, last name given a string. 
     The names will be returned by using out modifier */
-    // static void ParseNames(
-    //     string input,
-    //     out string firstName,
-    //     out string middleName,
-    //     out string lastName)
-    // {
-
-    // }
+    static void ParseNames(
+        string input,
+        out string firstName,
+        out string middleName,
+        out string lastName)
+    {
+        firstName = "Hung";
+        middleName = "Van";
+        lastName = "Hoang";
+    }
 
     /* Challenge 8. Write a function that does the guessing game. 
     The function will think of a random integer number (lets say within 100) 
@@ -150,6 +173,34 @@
     It’ll repeat the asking until the user puts the correct answer. */
     static void GuessingGame()
     {
+        try
+        {
+            Random rnd = new Random();
+            int num = rnd.Next(5);
+            int inputNum = default;
+            while (inputNum != num)
+            {
+                System.Console.WriteLine("Your guess: ");
+                var input = Console.ReadLine();
+                inputNum = Int32.Parse(input);
+                if (inputNum == num)
+                {
+                    System.Console.WriteLine("correct answer");
+                }
+                else
+                {
+                    System.Console.WriteLine("the answer is wrong. Guess again!");
+                }
+
+            }
+
+        }
+        catch (System.Exception)
+        {
+
+            throw new Exception("error");
+        }
+
 
     }
 }
