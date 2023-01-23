@@ -68,7 +68,20 @@
     {
         foreach (int[] i in jaggedArray)
         {
-            Array.Reverse(i);
+            // Array.Reverse(i);
+            for (var a = 0; a < i.Length; a++)
+            {
+                for (var j = a + 1; j < i.Length; j++)
+                {
+                    if (i[a] < i[j])
+                    {
+                        int storedValue = i[a];
+                        i[a] = i[j];
+                        i[j] = storedValue;
+                    }
+                }
+            }
+            System.Console.WriteLine(i[0]);
 
         }
         int[][] arr = { jaggedArray[0], jaggedArray[1] };
