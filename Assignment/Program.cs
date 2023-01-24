@@ -45,15 +45,28 @@
     */
     static int[] CommonItems(int[][] jaggedArray)
     {
-        int[] result = new int[2];
         int counter = 0;
+        int[] result = default;
+
         foreach (int i in jaggedArray[0])
         {
-            // var test = Array.Exists(jaggedArray[1], num => num == i);
-            if (Array.Exists(jaggedArray[1], num => num == i))
+            int count = 0;
+            for (var j = 1; j < jaggedArray.Length; j++)
             {
-                result[counter] = i;
+                for (var k = 0; k < jaggedArray[j].Length; k++)
+                {
+                    if (i == jaggedArray[j][k])
+                    {
+                        count++;
+                    }
+                }
+            }
+            if (count + 1 == jaggedArray.Length)
+            {
                 counter++;
+                result = new int[counter];
+                result[counter - 1] = i;
+                System.Console.WriteLine(result[counter - 1]);
             }
         }
         return result;
@@ -82,7 +95,6 @@
                 }
             }
             System.Console.WriteLine(i[0]);
-
         }
         int[][] arr = { jaggedArray[0], jaggedArray[1] };
 
@@ -147,11 +159,23 @@
     - Finally print everything out. 
     Example: Demo("hello", 1, 2, "world") 
     Expected result: hello world; 3 */
-    static void Demo(string a, int b, int c, string d)
+    static void Demo(params object[] list)
     {
-        string words = a + " " + d + "; ";
-        int nums = b + c;
-        // System.Console.WriteLine(words + nums);
+        string words = default;
+        int nums = 0;
+        foreach (var i in list)
+        {
+            if (i is string)
+            {
+                words += i + " ";
+            }
+            else
+            {
+                int num = (int)(i);
+                nums += num;
+            }
+        }
+        System.Console.WriteLine(words.Trim() + "; " + nums);
     }
 
     /* Challenge 6. Write a function to swap 2 objects but only if they are of the same type 
@@ -206,7 +230,6 @@
                 }
 
             }
-
         }
         catch (System.Exception)
         {
